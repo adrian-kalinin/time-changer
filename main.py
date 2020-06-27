@@ -12,8 +12,8 @@ def main():
             if not previous_time == get_current_time():
                 current_time = get_current_time()
                 previous_time = current_time
-                generate_image(current_time)
-                image = client.upload_file('time_image.jpg')
+                im = generate_image(current_time)
+                image = client.upload_file(im)
                 client(DeletePhotosRequest(client.get_profile_photos('me')))
                 client(UploadProfilePhotoRequest(image))
                 time.sleep(1)

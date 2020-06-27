@@ -1,6 +1,7 @@
 from PIL import Image, ImageFont, ImageDraw
 from datetime import datetime
 from pytz import timezone
+import io
 
 
 def get_current_time():
@@ -15,5 +16,8 @@ def generate_image(text):
     font = ImageFont.truetype(font='resources/ds-digit.ttf', size=212)
     wt, ht = draw.textsize(text, font=font)
     draw.text(((W - wt) / 2, (H - ht) / 2 ), text, font=font, fill='#157381')
-
-    image.save('time_image.jpg')
+    im = io.BytesIO()
+    im.name = 'time_image.jpg'
+    image.save(im, 'JPG')
+    im.seek(0)
+    return im

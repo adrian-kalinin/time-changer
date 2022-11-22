@@ -1,4 +1,4 @@
-Pillow==7.2.0
+Pillow==9.3.0
 pyaes==1.6.1
 pyasn1==0.4.8
 pytz==2020.1
